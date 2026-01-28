@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "Chat-App-Backend/server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "chat-app-latest/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "Chat-App-Backend/server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "chat-app-latest/$1",
+            "continue": true
+        }
+    ]
+}
