@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ichat-backend
+    env: node
+    rootDir: Chat-App-Backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SG_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
